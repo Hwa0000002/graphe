@@ -3,492 +3,552 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>GRAPHE</title>
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif;
-      background: #f7f8fb;
-      color: #111827;
-      line-height: 1.6;
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif;
+      background:#FFFCF8;
+      color:#111827;
+      line-height:1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
+    .container{
+      width:min(1120px,92%);
+      margin:0 auto;
     }
 
-    header {
-      padding: 28px 0;
+    header{
+      padding:28px 0;
     }
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    .logo{
+      font-family:"Abhaya Libre", serif;
+      font-size:34px;
+      font-weight:800;
+      letter-spacing:-0.03em;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-size: 15px;
-      color: #6b7280;
+    .nav-links{
+      display:flex;
+      gap:24px;
+      font-size:15px;
+      color:#6b7280;
     }
 
-    .hero {
-      min-height: calc(100vh - 90px);
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 64px;
-      padding: 60px 0 90px;
+    .hero{
+      min-height:calc(100vh - 90px);
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      align-items:center;
+      gap:64px;
+      padding:60px 0 90px;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #FFFCF8;
-      color: #5164c9;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 24px;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#F6EFE4;
+      color:#9A6B39;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:24px;
     }
 
-    h1 {
-      font-size: clamp(44px, 6vw, 76px);
-      line-height: 1.05;
-      letter-spacing: -0.07em;
-      margin-bottom: 24px;
+    h1{
+      font-size:clamp(44px,6vw,76px);
+      line-height:1.05;
+      letter-spacing:-0.07em;
+      margin-bottom:24px;
     }
 
-    .hero-text p {
-      max-width: 560px;
-      font-size: 20px;
-      color: #6b7280;
-      margin-bottom: 34px;
-      letter-spacing: -0.02em;
+    .hero-text p{
+      max-width:560px;
+      font-size:20px;
+      color:#6b7280;
+      margin-bottom:34px;
+      letter-spacing:-0.02em;
     }
 
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+    .buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 52px;
-      padding: 0 24px;
-      border-radius: 16px;
-      font-size: 16px;
-      font-weight: 700;
-      transition: 0.25s ease;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:52px;
+      padding:0 24px;
+      border-radius:16px;
+      font-size:16px;
+      font-weight:700;
+      transition:0.25s ease;
     }
 
-    .btn-primary {
-      background: #111827;
-      color: white;
+    .btn-primary{
+      background:#111827;
+      color:white;
     }
 
-    .btn-secondary {
-      background: white;
-      color: #111827;
-      border: 1px solid #e5e7eb;
+    .btn-secondary{
+      background:white;
+      color:#111827;
+      border:1px solid #EAE6E0;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 24px rgba(0,0,0,0.12);
     }
 
-    .phone-area {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      min-height: 520px;
+    .phone-area{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      min-height:520px;
     }
 
-    .phone-bg {
-      position: absolute;
-      width: 430px;
-      height: 430px;
-      border-radius: 50%;
-      background: radial-gradient(circle at top, #e8ecff, #f7f8fb 70%);
-      filter: blur(8px);
-      opacity: 0.95;
-      z-index: 0;
+    .phone-bg{
+      position:absolute;
+      width:430px;
+      height:430px;
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #FFF5E8 0%,
+          #FFF8F0 45%,
+          #FFFCF8 75%
+        );
+
+      filter:blur(8px);
+      opacity:0.95;
+      z-index:0;
     }
 
-    .hero-mockup {
-      position: relative;
-      z-index: 1;
-      width: 370px;
-      max-width: 100%;
-      filter: drop-shadow(0 35px 70px rgba(17, 24, 39, 0.24));
+    .hero-mockup{
+      position:relative;
+      z-index:1;
+      width:370px;
+      max-width:100%;
+      filter:drop-shadow(0 35px 70px rgba(17,24,39,0.18));
     }
 
-    .features {
-      padding: 90px 0;
-      background: white;
+    .features{
+      padding:90px 0;
+      background:white;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 56px;
+    .section-title{
+      text-align:center;
+      margin-bottom:56px;
     }
 
-    .section-title h2 {
-      font-size: clamp(32px, 4vw, 52px);
-      letter-spacing: -0.05em;
-      margin-bottom: 14px;
+    .section-title h2{
+      font-size:clamp(32px,4vw,52px);
+      letter-spacing:-0.05em;
+      margin-bottom:14px;
     }
 
-    .section-title p {
-      color: #6b7280;
-      font-size: 18px;
+    .section-title p{
+      color:#6b7280;
+      font-size:18px;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
     }
 
-    .feature-card {
-      padding: 30px;
-      border-radius: 28px;
-      background: #f7f8fb;
-      border: 1px solid #eef0f4;
+    .feature-card{
+      padding:30px;
+      border-radius:28px;
+      background:#FFFCF8;
+      border:1px solid #F2ECE3;
     }
 
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      background: #111827;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 22px;
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      background:#111827;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:800;
+      margin-bottom:22px;
     }
 
-    .feature-card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      letter-spacing: -0.03em;
+    .feature-card h3{
+      font-size:22px;
+      margin-bottom:10px;
+      letter-spacing:-0.03em;
     }
 
-    .feature-card p {
-      color: #6b7280;
-      font-size: 16px;
+    .feature-card p{
+      color:#6b7280;
+      font-size:16px;
     }
 
-    .mockup-section {
-      padding: 110px 0 120px;
-      background: #f7f8fb;
+    .mockup-section{
+      padding:110px 0 120px;
+      background:#FFFCF8;
     }
 
-    .mockup-title {
-      text-align: center;
-      margin-bottom: 56px;
+    .mockup-title{
+      text-align:center;
+      margin-bottom:56px;
     }
 
-    .mockup-title h2 {
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1.08;
-      letter-spacing: -0.065em;
-      margin-bottom: 18px;
+    .mockup-title h2{
+      font-size:clamp(36px,5vw,64px);
+      line-height:1.08;
+      letter-spacing:-0.065em;
+      margin-bottom:18px;
     }
 
-    .mockup-title p {
-      max-width: 620px;
-      margin: 0 auto;
-      color: #6b7280;
-      font-size: 18px;
-      letter-spacing: -0.02em;
+    .mockup-title p{
+      max-width:620px;
+      margin:0 auto;
+      color:#6b7280;
+      font-size:18px;
+      letter-spacing:-0.02em;
     }
 
-    .mockup-gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-      align-items: center;
-      justify-items: center;
+    .mockup-gallery{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+      align-items:end;
+      justify-items:center;
     }
 
-    .mockup-card {
-      width: 100%;
-      max-width: 240px;
-      transition: 0.25s ease;
+    .mockup-card{
+      width:100%;
+      max-width:240px;
+      transition:0.25s ease;
     }
 
-    .mockup-card:nth-child(2),
-    .mockup-card:nth-child(3) {
-      transform: translateY(-18px);
+    .mockup-card img{
+      width:100%;
+      height:540px;
+      object-fit:contain;
+      display:block;
+      filter:drop-shadow(0 28px 55px rgba(17,24,39,0.14));
     }
 
-    .mockup-card:hover {
-      transform: translateY(-28px);
+    .mockup-card:hover{
+      transform:translateY(-12px);
     }
 
-    .mockup-card:nth-child(2):hover,
-    .mockup-card:nth-child(3):hover {
-      transform: translateY(-42px);
+    .cta{
+      padding:90px 0;
+      background:#111827;
+      color:white;
+      text-align:center;
     }
 
-    .mockup-card img {
-      width: 100%;
-      display: block;
-      filter: drop-shadow(0 28px 55px rgba(17, 24, 39, 0.18));
+    .cta h2{
+      font-size:clamp(34px,4vw,56px);
+      letter-spacing:-0.055em;
+      margin-bottom:18px;
     }
 
-    .cta {
-      padding: 90px 0;
-      background: #111827;
-      color: white;
-      text-align: center;
+    .cta p{
+      color:#d1d5db;
+      font-size:18px;
+      margin-bottom:32px;
     }
 
-    .cta h2 {
-      font-size: clamp(34px, 4vw, 56px);
-      letter-spacing: -0.055em;
-      margin-bottom: 18px;
+    footer{
+      padding:34px 0;
+      text-align:center;
+      color:#9ca3af;
+      font-size:14px;
+      background:#111827;
     }
 
-    .cta p {
-      color: #d1d5db;
-      font-size: 18px;
-      margin-bottom: 32px;
-    }
+    @media (max-width:900px){
 
-    footer {
-      padding: 34px 0;
-      text-align: center;
-      color: #9ca3af;
-      font-size: 14px;
-      background: #111827;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+      .hero{
+        grid-template-columns:1fr;
+        text-align:center;
       }
 
-      .hero-text p {
-        margin-left: auto;
-        margin-right: auto;
+      .hero-text p{
+        margin-left:auto;
+        margin-right:auto;
       }
 
-      .buttons {
-        justify-content: center;
+      .buttons{
+        justify-content:center;
       }
 
-      .feature-grid {
-        grid-template-columns: 1fr;
+      .feature-grid{
+        grid-template-columns:1fr;
       }
 
-      .mockup-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 26px 16px;
+      .mockup-gallery{
+        grid-template-columns:repeat(2,1fr);
       }
 
-      .nav-links {
-        display: none;
+      .nav-links{
+        display:none;
       }
 
-      .phone-area {
-        min-height: auto;
-        margin-top: 40px;
+      .hero-mockup{
+        width:300px;
       }
 
-      .phone-bg {
-        width: 320px;
-        height: 320px;
-      }
-
-      .hero-mockup {
-        width: 300px;
-      }
-
-      .mockup-card {
-        max-width: 210px;
-      }
-
-      .mockup-card:nth-child(2),
-      .mockup-card:nth-child(3) {
-        transform: none;
-      }
-
-      .mockup-card:hover,
-      .mockup-card:nth-child(2):hover,
-      .mockup-card:nth-child(3):hover {
-        transform: translateY(-10px);
+      .mockup-card img{
+        height:460px;
       }
     }
 
-    @media (max-width: 520px) {
-      .mockup-gallery {
-        grid-template-columns: 1fr;
+    @media (max-width:520px){
+
+      .mockup-gallery{
+        grid-template-columns:1fr;
       }
 
-      .mockup-card {
-        max-width: 260px;
+      .mockup-card img{
+        height:auto;
       }
     }
+
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <div class="logo">Graphe</div>
 
-      <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#mockup">Preview</a>
-        <a href="#download">Download</a>
+<header>
 
-        <a href="index.html">KR</a>
-        <a href="en.html">EN</a>
-      </nav>
+  <div class="container nav">
+
+    <div class="logo">Graphe</div>
+
+    <nav class="nav-links">
+
+      <a href="#features">Features</a>
+      <a href="#mockup">Preview</a>
+      <a href="#download">Download</a>
+
+      <a href="index.html">KR</a>
+      <a href="en.html">EN</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+<main>
+
+  <section class="hero container">
+
+    <div class="hero-text">
+
+      <span class="badge">Graphe</span>
+
+      <h1>
+        Closer to God’s Word,<br />
+        Every Day
+      </h1>
+
+      <p>
+        Bring God’s Word closer to your daily life.
+        Meet Scripture and its original languages naturally on your Lock Screen and Home Screen.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#" class="btn btn-primary">
+          App Store
+        </a>
+
+        <a href="#features" class="btn btn-secondary">
+          Features
+        </a>
+
+      </div>
+
     </div>
-  </header>
 
-  <main>
-    <section class="hero container">
-      <div class="hero-text">
-        <span class="badge">Graphe</span>
+    <div class="phone-area">
 
-        <h1>Closer to God’s Word,<br />Every Day</h1>
+      <div class="phone-bg"></div>
+
+      <img
+        class="hero-mockup"
+        src="assets/app-mockup.png"
+        alt="Graphe App Mockup"
+      />
+
+    </div>
+
+  </section>
+
+  <section class="features" id="features">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>Key Features</h2>
 
         <p>
-          Bring God’s Word closer to your daily life.
-          Meet Scripture and its original languages naturally on your Lock Screen and Home Screen.
+          Graphe helps you experience Scripture and biblical languages more closely.
         </p>
 
-        <div class="buttons">
-          <a href="#" class="btn btn-primary">App Store</a>
-          <a href="#features" class="btn btn-secondary">Features</a>
-        </div>
       </div>
 
-      <div class="phone-area">
-        <div class="phone-bg"></div>
+      <div class="feature-grid">
 
-        <img
-          class="hero-mockup"
-          src="assets/app-mockup.png"
-          alt="Graphe app main screen mockup"
-        />
-      </div>
-    </section>
+        <article class="feature-card">
 
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-title">
-          <h2>Key Features</h2>
-          <p>Graphe helps you experience Scripture and biblical languages more closely.</p>
-        </div>
+          <div class="icon">01</div>
 
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="icon">01</div>
-            <h3>See Words Anywhere</h3>
-            <p>
-              View words and Scripture naturally on your Home Screen, Lock Screen, and inside the app.
-            </p>
-          </article>
+          <h3>See Words Anywhere</h3>
 
-          <article class="feature-card">
-            <div class="icon">02</div>
-            <h3>From Original Languages to Korean and English</h3>
-            <p>
-              Explore Greek and Hebrew alongside Korean and English to understand Scripture more deeply.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <div class="icon">03</div>
-            <h3>Save Words and Verses You Want to Remember</h3>
-            <p>
-              Save meaningful words and verses, and revisit them anytime you need.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="mockup-section" id="mockup">
-      <div class="container">
-        <div class="mockup-title">
-          <h2>See How<br />Graphe Looks</h2>
           <p>
-            Explore the actual screens of Graphe and see how Scripture and original-language words become part of your everyday moments.
+            View words and Scripture naturally on your Home Screen, Lock Screen, and inside the app.
           </p>
-        </div>
 
-        <div class="mockup-gallery">
-          <div class="mockup-card">
-            <img src="assets/mockup-01.png" alt="Graphe app mockup screen 1" />
-          </div>
+        </article>
 
-          <div class="mockup-card">
-            <img src="assets/mockup-02.png" alt="Graphe app mockup screen 2" />
-          </div>
+        <article class="feature-card">
 
-          <div class="mockup-card">
-            <img src="assets/mockup-03.png" alt="Graphe app mockup screen 3" />
-          </div>
+          <div class="icon">02</div>
 
-          <div class="mockup-card">
-            <img src="assets/mockup-04.png" alt="Graphe app mockup screen 4" />
-          </div>
-        </div>
+          <h3>From Original Languages to Korean and English</h3>
+
+          <p>
+            Explore Greek and Hebrew alongside Korean and English to understand Scripture more deeply.
+          </p>
+
+        </article>
+
+        <article class="feature-card">
+
+          <div class="icon">03</div>
+
+          <h3>Save Words and Verses You Want to Remember</h3>
+
+          <p>
+            Save meaningful words and verses, and revisit them anytime you need.
+          </p>
+
+        </article>
+
       </div>
-    </section>
 
-    <section class="cta" id="download">
-      <div class="container">
-        <h2>Our Design</h2>
+    </div>
+
+  </section>
+
+  <section class="mockup-section" id="mockup">
+
+    <div class="container">
+
+      <div class="mockup-title">
+
+        <h2>
+          See How<br />
+          Graphe Looks
+        </h2>
 
         <p>
-          Graphe is a calm and intuitive biblical language learning app
-          created for those who want to keep God’s Word close throughout the day.
+          Explore the actual screens of Graphe and see how Scripture and original-language words become part of your everyday moments.
         </p>
 
-        <a href="#" class="btn btn-secondary">View Project</a>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    © 2026 Graphe. All rights reserved.
-  </footer>
+      <div class="mockup-gallery">
+
+        <div class="mockup-card">
+          <img src="assets/mockup-01.png">
+        </div>
+
+        <div class="mockup-card">
+          <img src="assets/mockup-02.png">
+        </div>
+
+        <div class="mockup-card">
+          <img src="assets/mockup-03.png">
+        </div>
+
+        <div class="mockup-card">
+          <img src="assets/mockup-04.png">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="cta" id="download">
+
+    <div class="container">
+
+      <h2>Our Design</h2>
+
+      <p>
+        Graphe is a calm and intuitive biblical language learning app
+        created for those who want to keep God’s Word close throughout the day.
+      </p>
+
+      <a href="#" class="btn btn-secondary">
+        View Project
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Graphe. All rights reserved.
+</footer>
+
 </body>
 </html>
