@@ -8,508 +8,623 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap"
     rel="stylesheet"
   >
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif;
-      background:#FFFCF8;
-      color:#111827;
-      line-height:1.6;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif;
+      background: #FFFCF8;
+      color: #111827;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .container{
-      width:min(1120px,92%);
-      margin:0 auto;
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
     }
 
-    header{
-      padding:28px 0;
-      background:#FFFCF8;
+    header {
+      padding: 28px 0;
+      background: #FFFCF8;
+      position: relative;
+      z-index: 20;
     }
 
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .logo{
-      font-family:"Abhaya Libre", serif;
-      font-size:34px;
-      font-weight:800;
-      letter-spacing:-0.03em;
+    .logo {
+      font-family: "Abhaya Libre", serif;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #111827;
     }
 
-    .nav-links{
-      display:flex;
-      gap:24px;
-      font-size:15px;
-      color:#6b7280;
+    .nav-toggle {
+      display: none;
     }
 
-    .hero{
-      min-height:calc(100vh - 90px);
-      display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      align-items:center;
-      gap:64px;
-      padding:60px 0 90px;
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid #EAE6E0;
+      background: white;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#F6EFE4;
-      color:#9A6B39;
-      font-size:14px;
-      font-weight:700;
-      margin-bottom:24px;
+    .menu-button span {
+      width: 18px;
+      height: 2px;
+      background: #111827;
+      position: relative;
+      display: block;
     }
 
-    h1{
-      font-size:clamp(44px,6vw,76px);
-      line-height:1.05;
-      letter-spacing:-0.07em;
-      margin-bottom:24px;
+    .menu-button span::before,
+    .menu-button span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #111827;
+      transition: 0.25s ease;
     }
 
-    .hero-text p{
-      max-width:560px;
-      font-size:20px;
-      color:#6b7280;
-      margin-bottom:34px;
-      letter-spacing:-0.02em;
+    .menu-button span::before {
+      top: -6px;
     }
 
-    .buttons{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
+    .menu-button span::after {
+      top: 6px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      height:52px;
-      padding:0 24px;
-      border-radius:16px;
-      font-size:16px;
-      font-weight:700;
-      transition:0.25s ease;
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+      color: #6b7280;
+      align-items: center;
     }
 
-    .btn-primary{
-      background:#111827;
-      color:white;
+    .hero {
+      min-height: calc(100vh - 90px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 64px;
+      padding: 60px 0 90px;
     }
 
-    .btn-secondary{
-      background:white;
-      color:#111827;
-      border:1px solid #EAE6E0;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #F6EFE4;
+      color: #9A6B39;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
     }
 
-    .btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 24px rgba(0,0,0,0.12);
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
     }
 
-    .phone-area{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      min-height:520px;
+    .hero-text p {
+      max-width: 560px;
+      font-size: 20px;
+      color: #6b7280;
+      margin-bottom: 34px;
+      letter-spacing: -0.02em;
     }
 
-    .phone-bg{
-      position:absolute;
-      width:430px;
-      height:430px;
-      border-radius:50%;
-
-      background:
-        radial-gradient(
-          circle at center,
-          #FFF5E8 0%,
-          #FFF8F0 45%,
-          #FFFCF8 75%
-        );
-
-      filter:blur(8px);
-      opacity:0.95;
-      z-index:0;
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .hero-mockup{
-      position:relative;
-      z-index:1;
-      width:370px;
-      max-width:100%;
-      filter:drop-shadow(0 35px 70px rgba(17,24,39,0.18));
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      padding: 0 24px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: 0.25s ease;
     }
 
-    .features{
-      padding:90px 0;
-      background:white;
+    .btn-primary {
+      background: #111827;
+      color: white;
     }
 
-    .section-title{
-      text-align:center;
-      margin-bottom:56px;
+    .btn-secondary {
+      background: white;
+      color: #111827;
+      border: 1px solid #EAE6E0;
     }
 
-    .section-title h2{
-      font-size:clamp(32px,4vw,52px);
-      letter-spacing:-0.05em;
-      margin-bottom:14px;
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
     }
 
-    .section-title p{
-      color:#6b7280;
-      font-size:18px;
+    .phone-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 520px;
     }
 
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
+    .phone-bg {
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at center,
+        #FFF5E8 0%,
+        #FFF8F0 45%,
+        #FFFCF8 75%
+      );
+      filter: blur(8px);
+      opacity: 0.95;
+      z-index: 0;
     }
 
-    .feature-card{
-      padding:30px;
-      border-radius:28px;
-      background:#FFFCF8;
-      border:1px solid #F2ECE3;
+    .hero-mockup {
+      position: relative;
+      z-index: 1;
+      width: 370px;
+      max-width: 100%;
+      filter: drop-shadow(0 35px 70px rgba(17, 24, 39, 0.18));
     }
 
-    .icon{
-      width:48px;
-      height:48px;
-      border-radius:16px;
-      background:#111827;
-      color:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      font-weight:800;
-      margin-bottom:22px;
+    .features {
+      padding: 90px 0;
+      background: white;
     }
 
-    .feature-card h3{
-      font-size:22px;
-      margin-bottom:10px;
-      letter-spacing:-0.03em;
+    .section-title {
+      text-align: center;
+      margin-bottom: 56px;
     }
 
-    .feature-card p{
-      color:#6b7280;
-      font-size:16px;
+    .section-title h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
     }
 
-    .mockup-section{
-      padding:110px 0 120px;
-      background:#FFFCF8;
+    .section-title p {
+      color: #6b7280;
+      font-size: 18px;
     }
 
-    .mockup-title{
-      text-align:center;
-      margin-bottom:56px;
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
 
-    .mockup-title h2{
-      font-size:clamp(36px,5vw,64px);
-      line-height:1.08;
-      letter-spacing:-0.065em;
-      margin-bottom:18px;
+    .feature-card {
+      padding: 30px;
+      border-radius: 28px;
+      background: #FFFCF8;
+      border: 1px solid #F2ECE3;
     }
 
-    .mockup-title p{
-      max-width:620px;
-      margin:0 auto;
-      color:#6b7280;
-      font-size:18px;
-      letter-spacing:-0.02em;
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 22px;
     }
 
-    .mockup-gallery{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:22px;
-      align-items:end;
-      justify-items:center;
+    .feature-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
     }
 
-    .mockup-card{
-      width:100%;
-      max-width:240px;
-      transition:0.25s ease;
+    .feature-card p {
+      color: #6b7280;
+      font-size: 16px;
     }
 
-    .mockup-card img{
-      width:100%;
-      height:540px;
-      object-fit:contain;
-      display:block;
-      filter:drop-shadow(0 28px 55px rgba(17,24,39,0.14));
+    .mockup-section {
+      padding: 110px 0 120px;
+      background: #FFFCF8;
     }
 
-    .mockup-card:hover{
-      transform:translateY(-12px);
+    .mockup-title {
+      text-align: center;
+      margin-bottom: 56px;
     }
 
-    .cta{
-      padding:90px 0;
-      background:#111827;
-      color:white;
-      text-align:center;
+    .mockup-title h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
     }
 
-    .cta h2{
-      font-size:clamp(34px,4vw,56px);
-      letter-spacing:-0.055em;
-      margin-bottom:18px;
+    .mockup-title p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #6b7280;
+      font-size: 18px;
+      letter-spacing: -0.02em;
     }
 
-    .cta p{
-      max-width:860px;
-      margin:0 auto 32px;
-      color:#d1d5db;
-      font-size:18px;
+    .mockup-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      align-items: end;
+      justify-items: center;
     }
 
-    footer{
-      padding:34px 0;
-      text-align:center;
-      color:#9ca3af;
-      font-size:14px;
-      background:#111827;
+    .mockup-card {
+      width: 100%;
+      max-width: 240px;
+      transition: 0.25s ease;
     }
 
+    .mockup-card img {
+      width: 100%;
+      height: 540px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 28px 55px rgba(17, 24, 39, 0.14));
+    }
+
+    .mockup-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .cta {
+      padding: 90px 0;
+      background: #111827;
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(34px, 4vw, 56px);
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      max-width: 860px;
+      margin: 0 auto 32px;
+      color: #d1d5db;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 34px 0;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 14px;
+      background: #111827;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 32px;
+      }
+
+      .menu-button {
+        display: flex;
+      }
+
+      .nav {
+        position: relative;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 58px;
+        right: 0;
+        width: 220px;
+        padding: 18px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid #EAE6E0;
+        box-shadow: 0 18px 40px rgba(17, 24, 39, 0.12);
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: 0.25s ease;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 36px 0 72px;
+        text-align: center;
+      }
+
+      .phone-area {
+        order: 1;
+        min-height: auto;
+      }
+
+      .hero-text {
+        order: 2;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 13vw, 64px);
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .hero-mockup {
+        width: min(78vw, 320px);
+      }
+
+      .phone-bg {
+        width: 300px;
+        height: 300px;
+      }
+
+      .features {
+        padding: 72px 0;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .feature-card {
+        max-width: 420px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .mockup-section {
+        padding: 76px 0 90px;
+      }
+
+      .mockup-gallery {
+        grid-template-columns: 1fr;
+        gap: 46px;
+      }
+
+      .mockup-card {
+        max-width: 290px;
+      }
+
+      .mockup-card img {
+        height: auto;
+        width: 100%;
+      }
+
+      .cta {
+        padding: 76px 0;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Graphe</div>
 
-<header>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="menu-button">
+        <span></span>
+      </label>
 
-  <div class="container nav">
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#mockup">Preview</a>
+        <a href="#download">Download</a>
+        <a href="index.html">KR</a>
+        <a href="en.html">EN</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="logo">Graphe</div>
+  <main>
+    <section class="hero container">
+      <div class="hero-text">
+        <span class="badge">Graphe</span>
 
-    <nav class="nav-links">
+        <h1>
+          Closer to God’s Word,<br />
+          Every Day
+        </h1>
 
-      <a href="#features">Features</a>
-      <a href="#mockup">Preview</a>
-      <a href="#download">Download</a>
+        <p>
+          Bring God’s Word closer to your daily life.
+          Meet Scripture and its original languages naturally on your Lock Screen and Home Screen.
+        </p>
 
-      <a href="index.html">KR</a>
-      <a href="en.html">EN</a>
+        <div class="buttons">
+          <a
+            href="https://apps.apple.com/kr/app/graphe-study-bible/id6767853697"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            App Store
+          </a>
 
-    </nav>
+          <a href="#features" class="btn btn-secondary">
+            Features
+          </a>
+        </div>
+      </div>
 
-  </div>
+      <div class="phone-area">
+        <div class="phone-bg"></div>
 
-</header>
+        <img
+          class="hero-mockup"
+          src="assets/app-mockup.png"
+          alt="Graphe app main screen mockup"
+        />
+      </div>
+    </section>
 
-<main>
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Key Features</h2>
+          <p>
+            Graphe helps you experience Scripture and biblical languages more closely.
+          </p>
+        </div>
 
-  <section class="hero container">
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">01</div>
+            <h3>See Words Anywhere</h3>
+            <p>
+              View words and Scripture naturally on your Home Screen, Lock Screen, and inside the app.
+            </p>
+          </article>
 
-    <div class="hero-text">
+          <article class="feature-card">
+            <div class="icon">02</div>
+            <h3>From Original Languages to Korean and English</h3>
+            <p>
+              Explore Greek and Hebrew alongside Korean and English to understand Scripture more deeply.
+            </p>
+          </article>
 
-      <span class="badge">Graphe</span>
+          <article class="feature-card">
+            <div class="icon">03</div>
+            <h3>Save Words and Verses You Want to Remember</h3>
+            <p>
+              Save meaningful words and verses, and revisit them anytime you need.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <h1>
-        Closer to God’s Word,<br />
-        Every Day
-      </h1>
+    <section class="mockup-section" id="mockup">
+      <div class="container">
+        <div class="mockup-title">
+          <h2>
+            See How<br />
+            Graphe Looks
+          </h2>
 
-      <p>
-        Bring God’s Word closer to your daily life.
-        Meet Scripture and its original languages naturally on your Lock Screen and Home Screen.
-      </p>
+          <p>
+            Explore the actual screens of Graphe and see how Scripture and original-language words become part of your everyday moments.
+          </p>
+        </div>
 
-      <div class="buttons">
+        <div class="mockup-gallery">
+          <div class="mockup-card">
+            <img src="assets/mockup-01.png" alt="Graphe app mockup screen 1" />
+          </div>
+
+          <div class="mockup-card">
+            <img src="assets/mockup-02.png" alt="Graphe app mockup screen 2" />
+          </div>
+
+          <div class="mockup-card">
+            <img src="assets/mockup-03.png" alt="Graphe app mockup screen 3" />
+          </div>
+
+          <div class="mockup-card">
+            <img src="assets/mockup-04.png" alt="Graphe app mockup screen 4" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="download">
+      <div class="container">
+        <h2>Our Design</h2>
+
+        <p>
+          Graphe is a calm and intuitive biblical language learning app
+          created for those who want to keep God’s Word close throughout the day.
+        </p>
 
         <a
           href="https://apps.apple.com/kr/app/graphe-study-bible/id6767853697"
           target="_blank"
-          class="btn btn-primary"
+          class="btn btn-secondary"
         >
-          App Store
+          Download
         </a>
-
-        <a href="#features" class="btn btn-secondary">
-          Features
-        </a>
-
       </div>
+    </section>
+  </main>
 
-    </div>
-
-    <div class="phone-area">
-
-      <div class="phone-bg"></div>
-
-      <img
-        class="hero-mockup"
-        src="assets/app-mockup.png"
-        alt="Graphe App Mockup"
-      />
-
-    </div>
-
-  </section>
-
-  <section class="features" id="features">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <h2>Key Features</h2>
-
-        <p>
-          Graphe helps you experience Scripture and biblical languages more closely.
-        </p>
-
-      </div>
-
-      <div class="feature-grid">
-
-        <article class="feature-card">
-
-          <div class="icon">01</div>
-
-          <h3>See Words Anywhere</h3>
-
-          <p>
-            View words and Scripture naturally on your Home Screen, Lock Screen, and inside the app.
-          </p>
-
-        </article>
-
-        <article class="feature-card">
-
-          <div class="icon">02</div>
-
-          <h3>From Original Languages to Korean and English</h3>
-
-          <p>
-            Explore Greek and Hebrew alongside Korean and English to understand Scripture more deeply.
-          </p>
-
-        </article>
-
-        <article class="feature-card">
-
-          <div class="icon">03</div>
-
-          <h3>Save Words and Verses You Want to Remember</h3>
-
-          <p>
-            Save meaningful words and verses, and revisit them anytime you need.
-          </p>
-
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="mockup-section" id="mockup">
-
-    <div class="container">
-
-      <div class="mockup-title">
-
-        <h2>
-          See How<br />
-          Graphe Looks
-        </h2>
-
-        <p>
-          Explore the actual screens of Graphe and see how Scripture and original-language words become part of your everyday moments.
-        </p>
-
-      </div>
-
-      <div class="mockup-gallery">
-
-        <div class="mockup-card">
-          <img src="assets/mockup-01.png">
-        </div>
-
-        <div class="mockup-card">
-          <img src="assets/mockup-02.png">
-        </div>
-
-        <div class="mockup-card">
-          <img src="assets/mockup-03.png">
-        </div>
-
-        <div class="mockup-card">
-          <img src="assets/mockup-04.png">
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="cta" id="download">
-
-    <div class="container">
-
-      <h2>Our Design</h2>
-
-      <p>
-        Graphe is a calm and intuitive biblical language learning app
-        created for those who want to keep God’s Word close throughout the day.
-      </p>
-
-      <a
-        href="https://apps.apple.com/kr/app/graphe-study-bible/id6767853697"
-        target="_blank"
-        class="btn btn-secondary"
-      >
-        Download
-      </a>
-
-    </div>
-
-  </section>
-
-</main>
-
-<footer>
-  © 2026 Graphe. All rights reserved.
-</footer>
-
+  <footer>
+    © 2026 Graphe. All rights reserved.
+  </footer>
 </body>
 </html>
